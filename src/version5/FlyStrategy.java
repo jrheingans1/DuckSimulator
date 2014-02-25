@@ -10,6 +10,6 @@ package version5;
  *
  * @author James
  */
-public class FlyStrategy {
-    
+public interface FlyStrategy {
+	public abstract void fly();
 }
