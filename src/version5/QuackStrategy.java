@@ -1,5 +1,5 @@
 package version5;
 
-public interface QuackBehavior {
+public interface QuackStrategy {
 	public abstract void quack();
 }
