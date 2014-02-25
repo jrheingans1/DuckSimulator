@@ -18,19 +18,40 @@ package version5;
  * variable is an interface type, we could, through the magic
  * of polymorphism, dynamically asign a different QuackBehavior
  * implementation at runtime. We'll see this later.
- */	
-public class MallardDuck extends DuckCollection {
-	
-	public MallardDuck() {
-		// these properties are inherited from Duck
-		quackBehavior = new Quack();
-		flyBehavior = new FlyWithWings();
-	}
-	
-	public void display() {
-		System.out.println("I'm a Mallard Duck");
-	}
+ */
+public class MallardDuck implements PerformAllGroup {
 
-        
-	
+    private QuackStrategy quackStrategy;
+    private FlyStrategy flyStrategy;
+
+    public MallardDuck(QuackStrategy quackStrategy, FlyStrategy flyStrategy) {
+        this.quackStrategy = quackStrategy;
+        this.flyStrategy = flyStrategy;
+    }
+
+    @Override
+    public void performQuack() {
+        quackStrategy.quack();
+    }
+
+    @Override
+    public void performFly() {
+        flyStrategy.fly();
+    }
+
+    @Override
+    public void setQuackBehavior(QuackStrategy quackStrategy) {
+        this.quackStrategy = quackStrategy;
+    }
+
+    @Override
+    public void setFlyBehavior(FlyStrategy flyStrategy) {
+        this.flyStrategy = flyStrategy;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("I'm a Mallard Duck");
+    }
+
 }

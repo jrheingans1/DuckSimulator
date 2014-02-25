@@ -2,19 +2,18 @@ package version5;
 
 public class MiniDuckSimulator {
 
-	public static void main(String[] args) {
-		DuckGroup mallard = new MallardDuck();
-		mallard.display();
-		mallard.performQuack();
-		mallard.performFly();
-                mallard.setFlyBehavior(new FlyRocketPowered());
-                mallard.setQuackBehavior(new Squeak());
+    public static void main(String[] args) {
+        // Ducks that can Quack
+        QuackGroup[] ducks = {
+            new MallardDuck(new Quack(), new FlyWithWings()),
+            new RubberDuck(new Squeak())
+        };
 
-		DuckGroup model = new ModelDuck();
-		model.display();
-		model.performFly();
-		model.setFlyBehavior( new FlyRocketPowered() );
-		model.performFly();
-	}
+        for (QuackGroup duck : ducks) {
+            duck.performQuack();
+            duck.display();
+        }
+
+    }
 
 }

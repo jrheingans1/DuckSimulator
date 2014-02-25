@@ -1,16 +1,26 @@
 package version5;
 
-public class RubberDuck extends DuckCollection {
-	
-	public RubberDuck() {
-		// these properties are inherited from Duck
-		quackBehavior = new Squeak();
-		flyBehavior = new FlyNoWay();
-	}
-	
-	public void display() {
-		System.out.println("I'm a Rubber Duck");
-	}
-	
+public class RubberDuck implements QuackGroup {
+
+    private QuackStrategy quackStrategy;
+
+    public RubberDuck(QuackStrategy quackStrategy) {
+        this.quackStrategy = quackStrategy;
+    }
+
+    @Override
+    public void setQuackBehavior(QuackStrategy quackStrategy) {
+        this.quackStrategy = quackStrategy;
+    }
+
+    @Override
+    public void performQuack() {
+        quackStrategy.quack();
+    }
+
+    @Override
+    public void display() {
+        System.out.println("I'm a Rubber Duck");
+    }
 
 }
